@@ -1,0 +1,32 @@
+name: Python application
+# workflow
+# when ever we push or pull on main branch then this action will run
+# then it will run these JOBS
+on:
+  push:
+    branches:
+    - main
+    # name of branch
+  pull_request:
+    branches:
+    - main
+jobs:
+  build:
+# ubuntu latest version
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+# name is just a NAME , name given to steps
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+# running certain commands installing -> "flake8, pytest, requirement"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
