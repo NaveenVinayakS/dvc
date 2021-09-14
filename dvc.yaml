@@ -1,0 +1,4 @@
+stages:
+  load_data:
+  # terminal command to execute
+    cmd: python test.py

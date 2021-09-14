@@ -1,0 +1,7 @@
+# local package
+-e.
+
+dvc
+dvc[gdrive]
+sklearn
+pandas
